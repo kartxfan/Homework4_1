@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <!-- Переход между состояниями от старта к финишу-->
+    <Transition
+        motion:autoTransition="animateToEnd"
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1500">
+       <KeyFrameSet>
+           <!-- Задание траектории движения птицы-->
+           <KeyPosition
+               motion:motionTarget="@+id/bird"
+               motion:framePosition="10"
+               motion:keyPositionType="pathRelative"
+               motion:percentX="0.5"
+               motion:percentY="-0.5" />
+           <!-- Задание траектории движения облака-->
+           <!-- framePosition - отсчёт времени в процентах-->
+           <!-- scaleX, scaleY - размеры изображения-->
+           <!-- alpha - видимость-->
+       </KeyFrameSet>
+    </Transition>
+    <!-- Переход между состояниями от финиша к старту-->
+    <Transition
+        motion:autoTransition="animateToEnd"
+        motion:constraintSetEnd="@+id/start"
+        motion:constraintSetStart="@id/end"
+        motion:duration="1500"/>
+
+    <!-- Настройки описания состояния экрана старта-->
+    <ConstraintSet android:id="@+id/start">
+        <!-- Старт рисунка облака-->
+        <Constraint
+            android:layout_height="70dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="340dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintHorizontal_bias="0.389"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="70dp"
+            android:id="@+id/bird" />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/imageView"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="1.0"
+            motion:layout_constraintHorizontal_bias="0.0" />
+        <Constraint
+            android:layout_height="378dp"
+            android:layout_width="162dp"
+            android:id="@+id/imageView2"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_bias="1.0"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="1.0" />
+    </ConstraintSet>
+    <!-- Настройки описания состояния экрана финиша-->
+    <ConstraintSet android:id="@+id/end">
+        <!-- Финиш рисунка птицы-->
+        <!-- Финиш рисунка облака-->
+        <Constraint
+            android:layout_height="87dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="336dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintHorizontal_bias="0.681"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="82dp"
+            android:id="@+id/bird" />
+    </ConstraintSet>
+</MotionScene>
